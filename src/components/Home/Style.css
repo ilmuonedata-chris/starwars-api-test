@@ -1,0 +1,44 @@
+#home {
+  height: 100%;
+}
+
+#home .header-text {
+  font-weight: 900;
+  color: #171717;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 2px;
+}
+
+#home .bg-img {
+  background-image: url('../../assets/images/star-wars-wallpaper.jpg');
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.bottom-btn {
+  position: absolute;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+}
+
+.view-btn {
+  margin-top: 80px;
+  background: #3673df !important;
+  color: white !important;
+  border-radius: 20px;
+  letter-spacing: 5px;
+  padding: 10px 20px;
+  font-weight: 900;
+  border-color: transparent;
+}
+
+.view-btn:hover, .view-btn:active{
+  background-color: #2f62bd !important;
+  color: white !important;
+  border-color: transparent;
+}
