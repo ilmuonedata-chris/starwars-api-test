@@ -1,8 +1,23 @@
 import * as t from '../types';
 
 const initState = {
-  films: [],
+  films: {
+    isDoneFetching: false,
+    data: []
+  },
   filmDetail: {},
+  characters: {
+    isDoneFetching: false,
+    data: []
+  },
+  planets: {
+    isDoneFetching: false,
+    data: []
+  },
+  starships: {
+    isDoneFetching: false,
+    data: []
+  },
 }
 
 const filmReducers = (state = initState, action) => {
@@ -11,13 +26,53 @@ const filmReducers = (state = initState, action) => {
     case t.FETCH_FILMS :
       return {
         ...state, 
-        films: action.payload.films
+        films: {
+          isDoneFetching: true,
+          data: action.payload.films
+        }
+      }
+
+    case t.UNMOUNT_FILM_DETAILS :
+      return {
+        ...state, 
+        filmDetail: {},
+        characters: {
+          isDoneFetching: false,
+          data: []
+        },
+        planets: {
+          isDoneFetching: false,
+          data: []
+        },
+        starships: {
+          isDoneFetching: false,
+          data: []
+        },
+      }
+    
+    case t.UNMOUNT_DATA :
+      return {
+        ...state, 
+        [action.fieldName]: {
+          ...state[action.fieldName],
+          isDoneFetching: false,
+        }
       }
     
     case t.GET_FILM_DETAIL :
       return {
         ...state, 
         filmDetail: action.payload.filmDetail
+      }
+
+    case t.GET_BATCH_DETAILS :
+      return {
+        ...state, 
+        [action.fieldName]: {
+          ...state[action.payload.fieldName],
+          isDoneFetching: true,
+          data: action.payload.fieldDetails
+        }
       }
     
     default :
